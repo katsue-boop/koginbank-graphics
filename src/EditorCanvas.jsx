@@ -219,7 +219,10 @@ export default function EditorCanvas({
   }) // 毎レンダー再登録でstateRefの最新値を参照
 
   return (
-    <div style={{ flex: 1, overflow: 'auto', padding: 16, background: '#f0f0f0' }}>
+    <div
+      style={{ flex: 1, overflow: 'auto', padding: 16, background: '#f0f0f0' }}
+      onTouchStart={e => { if (e.touches.length === 1) e.stopPropagation() }}
+    >
       <canvas
         ref={canvasRef}
         style={{ display: 'block', background: '#fff', border: '0.5px solid #d0d0d8', borderRadius: 4, touchAction: 'pan-x pan-y', userSelect: 'none', cursor: tool === 'draw' ? 'crosshair' : 'default' }}

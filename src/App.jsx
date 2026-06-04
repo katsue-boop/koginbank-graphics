@@ -123,11 +123,11 @@ export default function App() {
         <HelpPanel />
       </header>
 
-      <div className={styles.main}>
+      <div className={styles.main} onTouchStart={e => { if (!menuOpenRef.current) e.stopPropagation() }}>
         {/* スマホ用メニュータブ */}
         <button className={styles.menuTab} onClick={toggleMenu} aria-label="メニュー">メニュー</button>
         {/* オーバーレイ */}
-        <div id="overlay" className={styles.overlay} onClick={closeMenu} />
+        <div id="overlay" className={styles.overlay} onClick={() => { if (menuOpenRef.current) closeMenu() }} />
 
         {/* サイドバー */}
         <div ref={sidebarRef} className={styles.sidebar}>
