@@ -1,8 +1,7 @@
-import { useEffect, useRef, useCallback, useState } from 'react'
+import { useEffect, useRef, useCallback } from 'react'
 import { calcSnap, hitTestLine, boxSelect, applyOffset, applyTransform, DRAG_THRESHOLD } from './utils'
 
-const MIN_CS = 12
-const MAX_CS = 32
+const CS = 20
 
 export default function EditorCanvas({
   lines, setLines, groups, sel, setSel,
@@ -15,25 +14,7 @@ export default function EditorCanvas({
   pasteOffset,
 }) {
   const canvasRef = useRef(null)
-  const wrapRef = useRef(null)
-  const [cs, setCs] = useState(20)
-
-  // ラッパー幅に合わせてセルサイズを自動調整
-  useEffect(() => {
-    const updateCs = () => {
-      if (!wrapRef.current) return
-      const availW = wrapRef.current.clientWidth - 32 // padding分
-      const availH = wrapRef.current.clientHeight - 32
-      const csW = Math.floor(availW / gridW)
-      const csH = Math.floor(availH / gridH)
-      const newCs = Math.max(MIN_CS, Math.min(MAX_CS, Math.min(csW, csH)))
-      setCs(newCs)
-    }
-    updateCs()
-    const ro = new ResizeObserver(updateCs)
-    if (wrapRef.current) ro.observe(wrapRef.current)
-    return () => ro.disconnect()
-  }, [gridW, gridH])
+  const cs = CS
 
   const draw = useCallback(() => {
     const canvas = canvasRef.current
@@ -249,7 +230,7 @@ export default function EditorCanvas({
   const onTouchEnd = (e) => { e.preventDefault(); const { rx, ry } = getRawXY(e); handleUp(rx, ry) }
 
   return (
-    <div ref={wrapRef} style={{ flex: 1, overflow: 'hidden', padding: 16, background: '#f0f0f0', display: 'flex', alignItems: 'flex-start', justifyContent: 'flex-start' }}>
+    <div style={{ flex: 1, overflow: 'auto', padding: 16, background: '#f0f0f0' }}>
       <canvas
         ref={canvasRef}
         style={{ display: 'block', background: '#fff', border: '0.5px solid #d0d0d8', borderRadius: 4, touchAction: 'none', userSelect: 'none', cursor: tool === 'draw' ? 'crosshair' : 'default' }}

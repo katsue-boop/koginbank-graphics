@@ -64,7 +64,7 @@
 
 .canvasWrap {
   flex: 1;
-  overflow: hidden;
+  overflow: auto;
   background: #f0f0f0;
   display: flex;
 }

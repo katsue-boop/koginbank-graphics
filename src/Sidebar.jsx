@@ -33,7 +33,7 @@ export default function Sidebar({
       <div className={styles.section}>
         <div className={styles.label}>ツール</div>
         <div className={styles.row}>
-          {[['draw', '✏️', '描画'], ['select', '⬚', '選択']].map(([t, icon, label]) => (
+          {[['draw', '✏️', '描画'], ['select', '↗', '選択']].map(([t, icon, label]) => (
             <button key={t} className={`${styles.toolBtn} ${tool === t ? styles.active : ''}`} onClick={() => handleSetTool(t)}>
               <span>{icon}</span>{label}
             </button>
