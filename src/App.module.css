@@ -1,0 +1,121 @@
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  background: #fafafa;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-bottom: 0.5px solid #ddd;
+  background: #fff;
+  flex-shrink: 0;
+}
+
+.titleInput {
+  border: 0.5px solid #ddd;
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: 13px;
+  background: transparent;
+  color: #111;
+  width: 140px;
+  min-width: 0;
+}
+
+.spacer { flex: 1; min-width: 4px; }
+
+.hbtn {
+  font-size: 12px;
+  padding: 5px 8px;
+  border: 0.5px solid #ddd;
+  border-radius: 8px;
+  background: transparent;
+  color: #555;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.hbtn:hover { background: #f5f5f5; }
+.hbtn.primary { background: #534AB7; color: #fff; border-color: #534AB7; }
+.hbtn.primary:hover { background: #3C3489; }
+
+.main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.sidebar {
+  width: 210px;
+  flex-shrink: 0;
+  border-right: 0.5px solid #ddd;
+  background: #fff;
+  overflow-y: auto;
+  transition: transform 0.25s ease;
+}
+
+.canvasWrap {
+  flex: 1;
+  overflow: auto;
+  padding: 16px;
+  background: #f0f0f0;
+}
+
+.menuTab {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 12;
+  background: #534AB7;
+  color: #fff;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  padding: 10px 4px;
+  cursor: pointer;
+  font-size: 11px;
+  writing-mode: vertical-rl;
+  letter-spacing: 1px;
+  line-height: 1;
+}
+
+.overlay {
+  display: none;
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 10;
+}
+
+.status {
+  font-size: 11px;
+  padding: 5px 12px;
+  border-top: 0.5px solid #ddd;
+  text-align: center;
+  flex-shrink: 0;
+  background: #fff;
+  color: #888;
+}
+.status.guide { color: #534AB7; font-weight: 500; }
+
+/* スマホ（600px未満） */
+:global(.mobile) .menuTab { display: flex; align-items: center; justify-content: center; }
+:global(.mobile) .sidebar {
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  z-index: 11;
+  transform: translateX(-100%);
+  box-shadow: 4px 0 16px rgba(0, 0, 0, 0.15);
+}
+:global(.mobile) .sidebar:global(.open) { transform: translateX(0); }
+:global(.mobile) :global(#overlay):global(.open) { display: block; }
+:global(.mobile) .canvasWrap { padding: 8px; }

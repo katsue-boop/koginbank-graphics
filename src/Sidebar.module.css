@@ -1,0 +1,86 @@
+.sidebar {
+  width: 210px;
+  flex-shrink: 0;
+  border-right: 0.5px solid #ddd;
+  padding: 12px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: #fff;
+  height: 100%;
+}
+
+.section { display: flex; flex-direction: column; gap: 4px; }
+.label { font-size: 11px; color: #888; font-weight: 500; margin-bottom: 2px; }
+.selCount { font-size: 11px; color: #534AB7; font-weight: 500; min-height: 16px; margin-bottom: 2px; }
+.clipInfo { font-size: 10px; color: #aaa; padding: 2px 0; }
+.sep { border: none; border-top: 0.5px solid #eee; margin: 3px 0; }
+
+.row { display: flex; gap: 6px; }
+
+.toolBtn {
+  flex: 1; padding: 6px 4px;
+  border: 0.5px solid #ddd; border-radius: 8px;
+  background: transparent; color: #666;
+  font-size: 11px; cursor: pointer;
+  display: flex; flex-direction: column; align-items: center; gap: 2px;
+}
+.toolBtn:hover { background: #f5f5f5; }
+.toolBtn.active { border-color: #534AB7; color: #534AB7; background: #EEEDFE; }
+
+.mbtn {
+  flex: 1; padding: 5px;
+  border: 0.5px solid #ddd; border-radius: 8px;
+  background: transparent; color: #666;
+  font-size: 11px; cursor: pointer; text-align: center;
+}
+.mbtn:hover { background: #f5f5f5; }
+.mbtn.active { background: #534AB7; color: #fff; border-color: #534AB7; }
+
+.sbtn {
+  padding: 5px 8px;
+  border: 0.5px solid #ddd; border-radius: 8px;
+  background: transparent; color: #666;
+  font-size: 11px; cursor: pointer; text-align: left;
+}
+.sbtn:hover { background: #f5f5f5; }
+.sbtn.full { width: 100%; }
+.sbtn.opActive { background: #EEEDFE; border-color: #534AB7; color: #534AB7; }
+
+.cmToggle { display: flex; gap: 4px; margin: 2px 0 4px; }
+.cmbtn {
+  flex: 1; padding: 3px 0;
+  border: 0.5px solid #ddd; border-radius: 6px;
+  background: transparent; color: #888;
+  font-size: 10px; cursor: pointer; text-align: center;
+}
+.cmbtn:hover { background: #f5f5f5; }
+.cmbtn.cmActive { background: #534AB7; color: #fff; border-color: #534AB7; }
+
+.lenGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; }
+.lbtn {
+  padding: 5px;
+  border: 0.5px solid #ddd; border-radius: 8px;
+  background: transparent; color: #666;
+  font-size: 12px; cursor: pointer; text-align: center;
+}
+.lbtn:hover { background: #f5f5f5; }
+.lbtn.active { border-color: #534AB7; color: #534AB7; background: #EEEDFE; }
+
+.colorGrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 4px; }
+.cbtn { width: 100%; aspect-ratio: 1; border-radius: 6px; border: 2px solid transparent; cursor: pointer; }
+.cbtn:hover { transform: scale(1.1); }
+.cbtnActive { border-color: #534AB7; outline: 1px solid #534AB7; }
+
+.gridRow { display: flex; gap: 6px; align-items: center; }
+.gridLabel { font-size: 11px; color: #888; }
+.numInput {
+  width: 48px; padding: 3px 5px;
+  border: 0.5px solid #ddd; border-radius: 6px;
+  font-size: 12px; color: #333;
+}
+
+.snapIndicator { font-size: 10px; text-align: center; padding: 2px 6px; border-radius: 6px; margin-top: 2px; }
+.snapGrid { background: #E1F5EE; color: #0F6E56; }
+.snapLine { background: #FAEEDA; color: #854F0B; }
