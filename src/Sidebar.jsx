@@ -144,9 +144,21 @@ export default function Sidebar({
         <div className={styles.label}>グリッド設定</div>
         <div className={styles.gridRow}>
           <span className={styles.gridLabel}>W</span>
-          <input type="number" value={gridW} min={5} max={100} onChange={e => setGridW(Math.max(5, Math.min(100, parseInt(e.target.value) || 30)))} className={styles.numInput} />
+          <input
+            type="number" inputMode="numeric"
+            value={gridW} min={5} max={100}
+            onChange={e => setGridW(e.target.value === '' ? '' : parseInt(e.target.value))}
+            onBlur={e => setGridW(Math.max(5, Math.min(100, parseInt(e.target.value) || 30)))}
+            className={styles.numInput}
+          />
           <span className={styles.gridLabel}>H</span>
-          <input type="number" value={gridH} min={5} max={100} onChange={e => setGridH(Math.max(5, Math.min(100, parseInt(e.target.value) || 20)))} className={styles.numInput} />
+          <input
+            type="number" inputMode="numeric"
+            value={gridH} min={5} max={100}
+            onChange={e => setGridH(e.target.value === '' ? '' : parseInt(e.target.value))}
+            onBlur={e => setGridH(Math.max(5, Math.min(100, parseInt(e.target.value) || 20)))}
+            className={styles.numInput}
+          />
         </div>
       </div>
 
