@@ -149,6 +149,18 @@ export default function Sidebar({
           <input type="number" value={gridH} min={5} max={100} onChange={e => setGridH(Math.max(5, Math.min(100, parseInt(e.target.value) || 20)))} className={styles.numInput} />
         </div>
       </div>
+
+      {/* ショップリンク */}
+      <div className={styles.shopSection}>
+        <a
+          href="https://koginbank.theshop.jp/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className={styles.shopLink}
+        >
+          🛒 koginbank オンラインショップ
+        </a>
+      </div>
     </div>
   )
 }

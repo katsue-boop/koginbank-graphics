@@ -2,6 +2,7 @@ import { useRef, useEffect, useCallback } from 'react'
 import { useEditor } from './useEditor'
 import EditorCanvas from './EditorCanvas'
 import Sidebar from './Sidebar'
+import HelpPanel from './HelpPanel'
 import { getLengths, saveToFile } from './utils'
 import styles from './App.module.css'
 
@@ -119,6 +120,7 @@ export default function App() {
         }}>🖼 PNG</button>
         <button className={styles.hbtn} onClick={handleNew}>＋ 新規</button>
         <button className={`${styles.hbtn} ${styles.primary}`} onClick={() => doSaveToFile(lines, groups, gidCounter, gridW, gridH, title)}>💾 保存</button>
+        <HelpPanel />
       </header>
 
       <div className={styles.main}>
