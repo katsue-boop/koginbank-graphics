@@ -4,6 +4,7 @@ import {
   applyOffset, applyTransform, saveToFile,
   GRP_COLORS, COLORS, PASTE_STEP, DRAG_THRESHOLD,
 } from './utils'
+import { gaEvent } from './analytics'
 
 const INITIAL_GRID_W = 30
 const INITIAL_GRID_H = 20
@@ -169,6 +170,7 @@ export function useEditor() {
     const data = { version: 1, title: currentTitle, gridW: currentGridW, gridH: currentGridH, lines: currentLines, groups: currentGroups, gidCounter: currentGidCounter }
     const filename = saveToFile(data)
     st(`「${filename}」を保存しました`, true)
+    gaEvent('download_zuan', { tool_name: 'zuanmaker' })
   }, [])
 
   const loadFromJSON = useCallback((data) => {

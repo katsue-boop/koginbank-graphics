@@ -1,5 +1,6 @@
 import { useEffect, useRef, useCallback } from 'react'
 import { calcSnap, hitTestLine, boxSelect, applyOffset, applyTransform, DRAG_THRESHOLD } from './utils'
+import { gaEvent } from './analytics'
 
 const CS = 20
 
@@ -170,7 +171,10 @@ export default function EditorCanvas({
     if (tool === 'draw' && !dragRef.current.active) {
       const p = { x: Math.max(0, Math.min(gridW, Math.round(rx / cs))), y: Math.max(0, Math.min(gridH, Math.round(ry / cs))) }
       const x2 = Math.min(gridW, p.x + len)
-      if (x2 !== p.x) setLines(prev => [...prev, { x1: p.x, y1: p.y, x2, y2: p.y, color, sw: strokeW, mode, len, gid: null }])
+      if (x2 !== p.x) {
+        setLines(prev => [...prev, { x1: p.x, y1: p.y, x2, y2: p.y, color, sw: strokeW, mode, len, gid: null }])
+        gaEvent('create_zuan', { tool_name: 'zuanmaker' })
+      }
     }
   }
 
